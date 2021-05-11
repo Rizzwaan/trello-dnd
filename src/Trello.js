@@ -110,8 +110,8 @@ const Trello = () => {
     let newCardId = `card-${board["cardIdMaker"] + 1}`;
     const newCard = {
       id: newCardId,
-      title: "dummy Card",
-      description: "Dummy descritption"
+      title: cardDetails.title,
+      description: cardDetails.description
     };
 
     const newBoard = { ...board };
