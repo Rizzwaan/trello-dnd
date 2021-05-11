@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Draggable } from "react-beautiful-dnd";
 
 const Container = styled.div`
-  border: 1px solid lightgray;
+  border: 1px solid #e8384f;
   border-radius: 2px;
   margin-bottom: 8px;
   padding: 8px;
@@ -21,7 +21,7 @@ const DeleteButtonCard = styled.button`
   border: none;
   cursor: pointer;
   border-radius: 4px;
-  background-color: red;
+  background-color: #e8384f;
   color: white;
 `;
 
@@ -29,10 +29,14 @@ const CardHeader = styled.div`
   display: flex;
   justify-content: space-between;
 `;
-const CardHeaderTitle = styled.p``;
+const CardHeaderTitle = styled.p`
+  font-weight: 400;
+`;
 
 const CardDetails = styled.div``;
-const CardDetailsContent = styled.p``;
+const CardDetailsContent = styled.p`
+  font-size: 14px;
+`;
 
 const Card = ({ card, index, listId, deleteCard }) => {
   return (

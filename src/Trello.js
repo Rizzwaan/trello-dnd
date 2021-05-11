@@ -48,7 +48,7 @@ const Trello = () => {
   const intialState = JSON.parse(localStorage.getItem("board")) || initialData;
   const [board, setBoard] = useState(intialState);
   const [toggleInput, setToggleInput] = useState(false);
-  const [listName, setListName] = useState("deafult_name");
+  const [listName, setListName] = useState("");
 
   useEffect(() => {
     localStorage.setItem("board", JSON.stringify(board));
@@ -197,6 +197,7 @@ const Trello = () => {
         <AddListContainer>
           <AddListButton
             className="add-list-btn"
+            placeholder=""
             onClick={() => setToggleInput(!toggleInput)}
           >
             {toggleInput ? "Cancel" : "Add List"}

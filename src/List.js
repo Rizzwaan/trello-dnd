@@ -151,6 +151,7 @@ const List = ({ list, cards, deleteList, addCard, deleteCard }) => {
           <Label htmlFor="title">
             <Input
               name="title"
+              autoFocus
               onChange={(e) => setTitle(e.target.value)}
               placeholder="title"
               type="text"
