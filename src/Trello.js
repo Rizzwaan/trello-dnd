@@ -119,18 +119,20 @@ const Trello = () => {
 
   // Adds a list
   const addList = (listName) => {
-    const listId = `list-${board["listOrder"].length + 1}`;
-    const newList = {
-      id: listId,
-      title: listName,
-      cardIds: [],
-    };
-    const newListOrder = [...board["listOrder"]];
-    newListOrder.push(listId);
-    const newBoard = { ...board };
-    newBoard["listOrder"] = newListOrder;
-    newBoard["lists"][listId] = newList;
-    setBoard(newBoard);
+    if (listName) {
+      const listId = `list-${board["listOrder"].length + 1}`;
+      const newList = {
+        id: listId,
+        title: listName,
+        cardIds: [],
+      };
+      const newListOrder = [...board["listOrder"]];
+      newListOrder.push(listId);
+      const newBoard = { ...board };
+      newBoard["listOrder"] = newListOrder;
+      newBoard["lists"][listId] = newList;
+      setBoard(newBoard);
+    }
   };
 
   // Delete a list
