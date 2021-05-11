@@ -7,6 +7,7 @@ import { DragDropContext } from "react-beautiful-dnd";
 const Container = styled.div`
   display: flex;
   padding: 20px;
+  overflow: auto;
 `;
 const Nav = styled.nav`
   display: flex;

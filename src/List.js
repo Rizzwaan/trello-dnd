@@ -4,11 +4,13 @@ import Card from "./Card";
 import { Droppable } from "react-beautiful-dnd";
 const Container = styled.div`
   margin: 8px;
-  // border: 1px solid grey;
   border-radius: 5px;
   box-shadow: 0px 0px 5px grey;
-  width: 220px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 22%;
   display: flex;
+  align-self: flex-start;
   flex-direction: column;
 `;
 const Title = styled.h3`
@@ -18,7 +20,7 @@ const TaskList = styled.div`
   padding: 8px;
   transition: background-color 0.2s ease;
   flex-grow: 1;
-  min-height: 100px;
+  min-height: 50px;
   background-color: ${(props) => (props.isDraggingOver ? "#81e0e3" : "white")};
 `;
 
@@ -56,20 +58,39 @@ const ListHeaderContainer = styled.div`
 `;
 
 const Form = styled.form`
-  width: 220px;
+  display: flex;
   padding: 10px;
+  flex-direction: column;
+  gap: 4px;
 `;
 
 const Input = styled.input`
   box-sizing: border-box;
-  width: 200px;
+  border: 1px solid green;
+  border-radius: 4px;
+
+  padding: 8px;
+  width: 100%;
 `;
 
 const Label = styled.label``;
 
 const TextArea = styled.textarea`
+  border: 1px solid green;
+  width: 100%;
+  padding: 8px;
   box-sizing: border-box;
-  width: 200px;
+`;
+
+const SubmitInput = styled.input`
+  box-sizing: border-box;
+  border: 1px solid green;
+  border-radius: 4px;
+  background-color: green;
+  color: white;
+  font-weight: bold;
+  padding: 8px;
+  width: 100%;
 `;
 
 const List = ({ list, cards, deleteList, addCard, deleteCard }) => {
@@ -139,7 +160,8 @@ const List = ({ list, cards, deleteList, addCard, deleteCard }) => {
               value={description}
             />
           </Label>
-          <Input type="submit" value="submit" />
+          <br />
+          <SubmitInput type="submit" value="Submit" />
         </Form>
       ) : null}
     </Container>

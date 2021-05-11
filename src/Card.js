@@ -34,14 +34,6 @@ const CardHeaderTitle = styled.p``;
 const CardDetails = styled.div``;
 const CardDetailsContent = styled.p``;
 
-// const Handle = styled.div`
-//   width: 20px;
-//   height: 20px;
-//   background-color: orange;
-//   border-radius: 4px;
-//   margin-right: 8px;
-// `;
-
 const Card = ({ card, index, listId, deleteCard }) => {
   return (
     <Draggable draggableId={card.id} index={index}>
