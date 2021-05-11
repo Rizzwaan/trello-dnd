@@ -13,7 +13,7 @@ const Trello = () => {
   const [board, setBoard] = useState(intialState);
   const [toggleInput, setToggleInput] = useState(false);
   const [listName, setListName] = useState("deafult_name");
-  
+
   useEffect(() => {
     localStorage.setItem("board", JSON.stringify(board));
   });
@@ -37,10 +37,10 @@ const Trello = () => {
       newCardIds.splice(destination.index, 0, draggableId);
       const newList = {
         ...start,
-        cardIds: newCardIds
+        cardIds: newCardIds,
       };
       const newBoard = {
-        ...board
+        ...board,
       };
       newBoard["lists"][newList.id] = newList;
       setBoard(newBoard);
@@ -53,7 +53,7 @@ const Trello = () => {
     startCardIds.splice(source.index, 1);
     const newStart = {
       ...start,
-      cardIds: startCardIds
+      cardIds: startCardIds,
     };
     let finishCardIds = [draggableId, ...Array.from(finish.cardIds)];
 
@@ -61,11 +61,11 @@ const Trello = () => {
 
     const newFinish = {
       ...finish,
-      cardIds: finishCardIds
+      cardIds: finishCardIds,
     };
 
     const newBoard = {
-      ...board
+      ...board,
     };
 
     newBoard["lists"][newStart.id] = newStart;
@@ -87,7 +87,7 @@ const Trello = () => {
     const newList = {
       id: listId,
       title: listName,
-      cardIds: []
+      cardIds: [],
     };
     const newListOrder = [...board["listOrder"]];
     newListOrder.push(listId);
@@ -118,7 +118,7 @@ const Trello = () => {
     const newCard = {
       id: newCardId,
       title: cardDetails.title,
-      description: cardDetails.description
+      description: cardDetails.description,
     };
 
     const newBoard = { ...board };
@@ -126,12 +126,12 @@ const Trello = () => {
 
     const newCards = {
       ...newBoard["cards"],
-      [newCard.id]: newCard
+      [newCard.id]: newCard,
     };
 
     const newList = {
       ...newBoard["lists"][listId],
-      cardIds: newCardIds
+      cardIds: newCardIds,
     };
     newBoard["lists"][listId] = newList;
     newBoard["cards"] = newCards;
@@ -139,7 +139,7 @@ const Trello = () => {
 
     setBoard(newBoard);
   };
-
+  // Delete A card
   const deleteCard = (listId, cardId) => {
     console.log(listId, cardId);
     let newCardIds = board["lists"][listId]["cardIds"].filter(
@@ -161,6 +161,7 @@ const Trello = () => {
         {toggleInput ? (
           <div>
             <input
+              autoFocus
               type="text"
               onChange={(e) => setListName(e.target.value)}
               value={listName}
