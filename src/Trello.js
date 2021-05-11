@@ -6,12 +6,18 @@ import { DragDropContext } from "react-beautiful-dnd";
 
 const Container = styled.div`
   display: flex;
+  padding: 20px;
 `;
 const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
-  background-color: #37c5ab;
-  padding: 20px;
+  background-color: #e8384f;
+  padding: 16px;
+`;
+
+const BrandName = styled.h1`
+  align-self: center;
+  color: white;
 `;
 
 const AddListContainer = styled.div`
@@ -24,11 +30,13 @@ const AddListContainer = styled.div`
 const AddListButton = styled.button`
   padding: 8px 16px 8px 16px;
   border: none;
+  border-radius: 5px;
   font-size: 18px;
-  background-color: yellow;
+  font-weight: 600;
+  background-color: white;
   cursor: pointer;
   :hover {
-    background-color: #fd9a00;
+    background-color: #0390fc;
     color: white;
   }
 `;
@@ -181,7 +189,7 @@ const Trello = () => {
   return (
     <div>
       <Nav>
-        <h1 className="nav-title">Trello</h1>
+        <BrandName className="nav-title">Trello</BrandName>
         <AddListContainer>
           <AddListButton
             className="add-list-btn"

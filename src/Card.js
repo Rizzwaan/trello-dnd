@@ -8,6 +8,9 @@ const Container = styled.div`
   margin-bottom: 8px;
   padding: 8px;
   background-color: ${(props) => (props.isDragging ? "lightgreen" : "white")};
+  color: ${(props) => (props.isDragging ? "darkgreen" : "black")};
+  font-size: ${(props) => (props.isDragging ? "20px" : "16px")};
+  font-weight: ${(props) => (props.isDragging ? "600" : "400")};
 `;
 
 const DeleteButtonCard = styled.button`
@@ -17,6 +20,7 @@ const DeleteButtonCard = styled.button`
   margin: 0;
   border: none;
   cursor: pointer;
+  border-radius: 4px;
   background-color: red;
   color: white;
 `;

@@ -4,8 +4,9 @@ import Card from "./Card";
 import { Droppable } from "react-beautiful-dnd";
 const Container = styled.div`
   margin: 8px;
-  border: 1px solid black;
-  border-radius: 2px;
+  // border: 1px solid grey;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px grey;
   width: 220px;
   display: flex;
   flex-direction: column;
@@ -18,28 +19,40 @@ const TaskList = styled.div`
   transition: background-color 0.2s ease;
   flex-grow: 1;
   min-height: 100px;
-  background-color: ${(props) => (props.isDraggingOver ? "skyblue" : "white")};
+  background-color: ${(props) => (props.isDraggingOver ? "#81e0e3" : "white")};
 `;
 
 const DeleteListBtn = styled.button`
   justify-self: center;
   align-self: center;
   border: 0;
-  background-color: blue;
-  color: white;
+  background-color: white;
+  color: black;
+  border-radius: 4px;
   padding: 4px;
   cursor: pointer;
+  margin-right: 10px;
 `;
 
 const AddCardButton = styled.button`
-  background-color: green;
+  background-color: #e8384f;
   color: white;
-  padding: 4px;
+  padding: 6px;
+  font-weight: 600;
+  margin: 10px;
+  border-radius: 4px;
   cursor: pointer;
+  border: none;
 `;
 
 const ListHeaderContainer = styled.div`
   display: flex;
+  justify-content: space-between;
+  background-color: white;
+  color: black;
+  border-radius: 10px 10px 0px 0px;
+  border-bottom: 2px solid black;
+  letter-spacing: 2px;
 `;
 
 const Form = styled.form`
@@ -76,7 +89,7 @@ const List = ({ list, cards, deleteList, addCard, deleteCard }) => {
   return (
     <Container>
       <ListHeaderContainer>
-        <Title>{list.title}</Title>
+        <Title>{list.title.toUpperCase()}</Title>
         <DeleteListBtn onClick={() => deleteList(list.id)}>
           &#x2716;
         </DeleteListBtn>
@@ -103,7 +116,7 @@ const List = ({ list, cards, deleteList, addCard, deleteCard }) => {
         )}
       </Droppable>
       <AddCardButton onClick={() => setShowForm(!showForm)}>
-        {showForm ? "Cancel" : "Add Card"}
+        {showForm ? "Cancel" : "Add"}
       </AddCardButton>
       {showForm ? (
         <Form onSubmit={(e) => handleCardInputData(e, list.id)}>
