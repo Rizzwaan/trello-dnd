@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import List from "./List";
 import initialData from "./data";
 import styled from "styled-components";
@@ -9,9 +9,14 @@ const Container = styled.div`
 `;
 
 const Trello = () => {
-  const [board, setBoard] = useState(initialData);
+  const intialState = JSON.parse(localStorage.getItem("board")) || initialData;
+  const [board, setBoard] = useState(intialState);
   const [toggleInput, setToggleInput] = useState(false);
   const [listName, setListName] = useState("deafult_name");
+  
+  useEffect(() => {
+    localStorage.setItem("board", JSON.stringify(board));
+  });
   const onDragEnd = (result) => {
     const { destination, source, draggableId } = result;
     if (!destination) {
