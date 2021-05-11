@@ -7,6 +7,33 @@ import { DragDropContext } from "react-beautiful-dnd";
 const Container = styled.div`
   display: flex;
 `;
+const Nav = styled.nav`
+  display: flex;
+  justify-content: space-between;
+  background-color: #37c5ab;
+  padding: 20px;
+`;
+
+const AddListContainer = styled.div`
+  align-self: center;
+  padding-left: 30px;
+  display: flex;
+  gap: 20px;
+`;
+
+const AddListButton = styled.button`
+  padding: 8px 16px 8px 16px;
+  border: none;
+  font-size: 18px;
+  background-color: yellow;
+  cursor: pointer;
+  :hover {
+    background-color: #fd9a00;
+    color: white;
+  }
+`;
+
+const AddTodoInput = styled.input``;
 
 const Trello = () => {
   const intialState = JSON.parse(localStorage.getItem("board")) || initialData;
@@ -153,23 +180,26 @@ const Trello = () => {
 
   return (
     <div>
-      <nav>
+      <Nav>
         <h1 className="nav-title">Trello</h1>
-        <button className="add-list-btn" onClick={() => setToggleInput(true)}>
-          Add List
-        </button>
-        {toggleInput ? (
-          <div>
-            <input
+        <AddListContainer>
+          <AddListButton
+            className="add-list-btn"
+            onClick={() => setToggleInput(!toggleInput)}
+          >
+            {toggleInput ? "Cancel" : "Add List"}
+          </AddListButton>
+          {toggleInput ? (
+            <AddTodoInput
               autoFocus
               type="text"
               onChange={(e) => setListName(e.target.value)}
               value={listName}
               onKeyPress={handleKeyPress}
             />
-          </div>
-        ) : null}
-      </nav>
+          ) : null}
+        </AddListContainer>
+      </Nav>
       <DragDropContext onDragEnd={onDragEnd}>
         <Container>
           {board.listOrder.map((listId) => {
