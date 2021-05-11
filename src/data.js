@@ -1,29 +1,35 @@
 const initialData = {
   cards: {
-    "card-1": { id: "card-1", title: "Take out", description: "" },
-    "card-2": { id: "card-2", title: "Get out", description: "" },
-    "card-3": { id: "card-3", title: "Hii", description: "" },
-    "card-4": { id: "card-4", title: "Hello", description: "" }
+    "card-1": {
+      id: "card-1",
+      title: "Dummy card 1",
+      description: "Dummy description 1",
+    },
+    "card-2": {
+      id: "card-2",
+      title: "Dummy card 2",
+      description: "Dummy description 2",
+    },
+    "card-3": {
+      id: "card-3",
+      title: "Dummy card 3",
+      description: "Dummy description 3",
+    },
   },
-  cardIdMaker: 4,
+  cardIdMaker: 3,
   lists: {
     "list-1": {
       id: "list-1",
-      title: "Todo",
-      cardIds: ["card-1", "card-2", "card-3", "card-4"]
+      title: "Dummy List 1",
+      cardIds: ["card-1", "card-2", "card-3"],
     },
     "list-2": {
       id: "list-2",
-      title: "Doing",
-      cardIds: []
+      title: "Dummy List 2",
+      cardIds: [],
     },
-    "list-3": {
-      id: "list-3",
-      title: "Done",
-      cardIds: []
-    }
   },
-  listOrder: ["list-1", "list-2", "list-3"]
+  listOrder: ["list-1", "list-2"],
 };
 
 export default initialData;

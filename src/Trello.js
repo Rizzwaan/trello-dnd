@@ -53,6 +53,7 @@ const Trello = () => {
   useEffect(() => {
     localStorage.setItem("board", JSON.stringify(board));
   });
+  // Handle darg and drop
   const onDragEnd = (result) => {
     const { destination, source, draggableId } = result;
     if (!destination) {
@@ -85,7 +86,6 @@ const Trello = () => {
 
     // // Moving from one list to another
     const startCardIds = Array.from(start.cardIds);
-    console.log(startCardIds);
     startCardIds.splice(source.index, 1);
     const newStart = {
       ...start,
@@ -119,6 +119,7 @@ const Trello = () => {
 
   // Adds a list
   const addList = (listName) => {
+    // TODO : Proper form Validation and Error message can added
     if (listName) {
       const listId = `list-${board["listOrder"].length + 1}`;
       const newList = {

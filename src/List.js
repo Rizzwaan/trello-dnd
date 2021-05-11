@@ -99,12 +99,19 @@ const List = ({ list, cards, deleteList, addCard, deleteCard }) => {
   const [description, setDescription] = useState("");
 
   const handleCardInputData = (event, listId) => {
+    // TODO: Propper Form Validation can be added
     event.preventDefault();
-    const cardDetails = { title, description };
-    addCard(listId, cardDetails);
-    setTitle("");
-    setDescription("");
-    setShowForm(false);
+    if (title) {
+      const cardDetails = { title, description };
+      addCard(listId, cardDetails);
+      setTitle("");
+      setDescription("");
+      setShowForm(false);
+    } else {
+      setTitle("");
+      setDescription("");
+      setShowForm(false);
+    }
   };
 
   return (
