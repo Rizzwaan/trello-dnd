@@ -44,13 +44,15 @@ const Trello = () => {
 
     // // Moving from one list to another
     const startCardIds = Array.from(start.cardIds);
+    console.log(startCardIds);
     startCardIds.splice(source.index, 1);
     const newStart = {
       ...start,
       cardIds: startCardIds
     };
-    const finishCardIds = Array.from(finish.cardIds);
-    finishCardIds.splice(destination.index, 0, draggableId);
+    let finishCardIds = [draggableId, ...Array.from(finish.cardIds)];
+
+    // finishCardIds.splice(destination.index, 0, draggableId);
 
     const newFinish = {
       ...finish,

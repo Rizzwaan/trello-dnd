@@ -103,7 +103,7 @@ const List = ({ list, cards, deleteList, addCard, deleteCard }) => {
         )}
       </Droppable>
       <AddCardButton onClick={() => setShowForm(!showForm)}>
-        Add Card
+        {showForm ? "Cancel" : "Add Card"}
       </AddCardButton>
       {showForm ? (
         <Form onSubmit={(e) => handleCardInputData(e, list.id)}>
