@@ -3,6 +3,7 @@ import List from "./List";
 import initialData from "./data";
 import styled from "styled-components";
 import { DragDropContext } from "react-beautiful-dnd";
+import { ReactComponent as EmptySvg } from "./image.svg";
 
 const Container = styled.div`
   display: flex;
@@ -214,6 +215,9 @@ const Trello = () => {
         </AddListContainer>
       </Nav>
       <DragDropContext onDragEnd={onDragEnd}>
+        {board.listOrder.length == 0 ? (
+          <EmptySvg style={{ width: "400px", margin: "0 auto" }} />
+        ) : null}
         <Container>
           {board.listOrder.map((listId) => {
             const list = board["lists"][listId];
