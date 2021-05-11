@@ -216,7 +216,7 @@ const Trello = () => {
       </Nav>
       <DragDropContext onDragEnd={onDragEnd}>
         {board.listOrder.length == 0 ? (
-          <EmptySvg style={{ width: "400px", margin: "0 auto" }} />
+          <EmptySvg style={{ width: "400px", marginLeft: "40px" }} />
         ) : null}
         <Container>
           {board.listOrder.map((listId) => {
