@@ -101,7 +101,7 @@ const List = ({ list, cards, deleteList, addCard, deleteCard }) => {
   const handleCardInputData = (event, listId) => {
     // TODO: Propper Form Validation can be added
     event.preventDefault();
-    if (title) {
+    if (title && description) {
       const cardDetails = { title, description };
       addCard(listId, cardDetails);
       setTitle("");
