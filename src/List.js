@@ -8,10 +8,15 @@ const Container = styled.div`
   box-shadow: 0px 0px 5px grey;
   flex-grow: 0;
   flex-shrink: 0;
-  flex-basis: 22%;
+  flex-basis: 25%;
   display: flex;
   align-self: flex-start;
   flex-direction: column;
+  @media (max-width: 480px) {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 75%;
+  }
 `;
 const Title = styled.h3`
   padding: 8px;
@@ -113,7 +118,13 @@ const List = ({ list, cards, deleteList, addCard, deleteCard }) => {
       setShowForm(false);
     }
   };
-
+  const addListEventHandler = (event) => {
+    setShowForm(!showForm);
+    if (window.innerWidth <= 480) {
+      console.log("Hello");
+      window.scrollBy(0, 1000);
+    }
+  };
   return (
     <Container>
       <ListHeaderContainer>
@@ -143,7 +154,7 @@ const List = ({ list, cards, deleteList, addCard, deleteCard }) => {
           </TaskList>
         )}
       </Droppable>
-      <AddCardButton onClick={() => setShowForm(!showForm)}>
+      <AddCardButton onClick={addListEventHandler}>
         {showForm ? "Cancel" : "Add"}
       </AddCardButton>
       {showForm ? (
@@ -169,7 +180,7 @@ const List = ({ list, cards, deleteList, addCard, deleteCard }) => {
             />
           </Label>
           <br />
-          <SubmitInput type="submit" value="Submit" />
+          <SubmitInput type="submit" value="Add Now" />
         </Form>
       ) : null}
     </Container>

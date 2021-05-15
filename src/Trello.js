@@ -15,18 +15,27 @@ const Nav = styled.nav`
   justify-content: space-between;
   background-color: #e8384f;
   padding: 16px;
+  @media (max-width: 480px) {
+    flex-direction: column;
+    gap: 10px;
+  }
 `;
 
 const BrandName = styled.h1`
   align-self: center;
   color: white;
+  @media (max-width: 480px) {
+    align-self: center;
+  }
 `;
 
 const AddListContainer = styled.div`
   align-self: center;
-  padding-left: 30px;
   display: flex;
   gap: 20px;
+  @media (max-width: 480px) {
+    flex-direction: column;
+  }
 `;
 
 const AddListButton = styled.button`
@@ -41,9 +50,20 @@ const AddListButton = styled.button`
     background-color: #0390fc;
     color: white;
   }
+  @media (max-width: 480px) {
+    align-self: center;
+  }
 `;
 
-const AddTodoInput = styled.input``;
+const AddTodoInput = styled.input`
+  @media (max-width: 480px) {
+    padding: 8px;
+    width: 256px;
+    border-radius: 4px;
+    border: none;
+    box-shadow: 0px 0px 5px gray;
+  }
+`;
 
 const Trello = () => {
   const intialState = JSON.parse(localStorage.getItem("board")) || initialData;
@@ -75,10 +95,10 @@ const Trello = () => {
       newCardIds.splice(destination.index, 0, draggableId);
       const newList = {
         ...start,
-        cardIds: newCardIds,
+        cardIds: newCardIds
       };
       const newBoard = {
-        ...board,
+        ...board
       };
       newBoard["lists"][newList.id] = newList;
       setBoard(newBoard);
@@ -90,7 +110,7 @@ const Trello = () => {
     startCardIds.splice(source.index, 1);
     const newStart = {
       ...start,
-      cardIds: startCardIds,
+      cardIds: startCardIds
     };
     let finishCardIds = [draggableId, ...Array.from(finish.cardIds)];
 
@@ -98,11 +118,11 @@ const Trello = () => {
 
     const newFinish = {
       ...finish,
-      cardIds: finishCardIds,
+      cardIds: finishCardIds
     };
 
     const newBoard = {
-      ...board,
+      ...board
     };
 
     newBoard["lists"][newStart.id] = newStart;
@@ -126,7 +146,7 @@ const Trello = () => {
       const newList = {
         id: listId,
         title: listName,
-        cardIds: [],
+        cardIds: []
       };
       const newListOrder = [...board["listOrder"]];
       newListOrder.push(listId);
@@ -158,7 +178,7 @@ const Trello = () => {
     const newCard = {
       id: newCardId,
       title: cardDetails.title,
-      description: cardDetails.description,
+      description: cardDetails.description
     };
 
     const newBoard = { ...board };
@@ -166,12 +186,12 @@ const Trello = () => {
 
     const newCards = {
       ...newBoard["cards"],
-      [newCard.id]: newCard,
+      [newCard.id]: newCard
     };
 
     const newList = {
       ...newBoard["lists"][listId],
-      cardIds: newCardIds,
+      cardIds: newCardIds
     };
     newBoard["lists"][listId] = newList;
     newBoard["cards"] = newCards;
@@ -215,8 +235,8 @@ const Trello = () => {
         </AddListContainer>
       </Nav>
       <DragDropContext onDragEnd={onDragEnd}>
-        {board.listOrder.length == 0 ? (
-          <EmptySvg style={{ width: "400px", marginLeft: "40px" }} />
+        {board.listOrder.length === 0 ? (
+          <EmptySvg style={{ width: "80%", marginLeft: "5px" }} />
         ) : null}
         <Container>
           {board.listOrder.map((listId) => {
